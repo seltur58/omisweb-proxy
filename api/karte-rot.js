@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     const fbRes = await fetch(`${FIREBASE_URL}/zuschauerListe.json`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: username, grund: grund, typ: 'rot' })
+      body: JSON.stringify({ name: username, grund: grund, typ: 'rot', zeit: Date.now() })
     });
     if (!fbRes.ok) throw new Error('Firebase-Fehler');
     return res.status(200).send(`🟥 Rote Karte für ${username} eingetragen!`);
